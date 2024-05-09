@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { FiPlus, FiHome, FiMusic, FiCompass } from "react-icons/fi";
 
 import { cn } from "@/lib/utils";
+import { dummyPlaylistArray } from "@/lib/dummy";
+import PlaylistItem from "./PlaylistItem";
 
 function Navigator() {
   const pathname = usePathname();
@@ -58,6 +60,15 @@ function Navigator() {
           <FiPlus size={24}></FiPlus>
           <span>새 재생목록</span>
         </div>
+      </section>
+      <section className="px-6">
+        <ul>
+          {dummyPlaylistArray.map((playlistItem) => {
+            return (
+              <PlaylistItem key={playlistItem.id} playlistItem={playlistItem} />
+            );
+          })}
+        </ul>
       </section>
     </div>
   );
